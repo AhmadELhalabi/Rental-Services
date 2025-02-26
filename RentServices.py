@@ -7,3 +7,10 @@ class Vehical:
        self.year = year
        self.RentPricePerDay = RentPricePerDay 
        self.SpecialAttribute = SpecialAttribute
+ 
+ # Displaying vehicle information based on its type (car or bike)
+    def displayinfo(self):
+         if self.VehicalType == "car":
+            print(f"Car: {self.brand} {self.model}, Year: {self.year}, Seats: {self.SpecialAttribute}, Rental Price: ${self.RentPricePerDay}/day")
+         elif self.VehicalType == "bike":
+            print(f"Bike: {self.brand} {self.model}, Year: {self.year}, Engine: {self.SpecialAttribute}cc, Rental Price: ${self.RentPricePerDay}/day")
