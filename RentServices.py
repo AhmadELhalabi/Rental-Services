@@ -104,3 +104,18 @@ def menu ():
     print("Enter 4 to exit")
 
     return int(input("Choice: "))
+
+# Main loop of the program
+while action != 4:  
+    action = menu()
+
+    if action == 0:
+        create_vehicle()
+    elif action == 1:
+        display_vehicles()
+    elif action == 2:
+        rent_vehicle()
+    elif action == 3:
+        update_rental_price()
+    elif action == 4:
+        print("Program Exit")
