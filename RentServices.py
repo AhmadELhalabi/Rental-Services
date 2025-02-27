@@ -35,6 +35,13 @@ class Vehical:
 vehicles_list = []  # List to store all vehicles
 action = None
 
+# to make sure the user create_vehical before other options 
+def add_vehical():
+
+    if len(vehicles_list) == 0:
+        print("You must add a vehicle first!")
+        return False  
+    return True 
 
 # make the user to enter vehicle details
 def create_vehicle():
@@ -60,6 +67,9 @@ def create_vehicle():
 
 def rent_vehicle():
    
+    if not add_vehical():
+        return
+
     brand = input("Enter the brand of the vehicle you want to rent: ")
     days = int(input("Enter number of rental days: "))
 
@@ -73,6 +83,9 @@ def rent_vehicle():
     
 def update_rental_price():
     
+    if not add_vehical():  
+        return
+
     brand = input("Enter the brand of the vehicle you want to update: ")
     new_price = float(input("Enter new rental price per day: "))
 
@@ -86,6 +99,8 @@ def update_rental_price():
 
 def display_vehicles():
    
+ if not add_vehical():  
+        return
 
  for vehicle in vehicles_list:
   show_vehicle_info(vehicle)
