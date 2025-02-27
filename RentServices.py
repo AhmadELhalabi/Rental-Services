@@ -58,3 +58,16 @@ def create_vehicle():
     vehicles_list.append(vehicle)
     print(f"{vehicle_type.capitalize()} added successfully!")
 
+def rent_vehicle():
+   
+    brand = input("Enter the brand of the vehicle you want to rent: ")
+    days = int(input("Enter number of rental days: "))
+
+    for vehicle in vehicles_list:
+        if vehicle.brand.lower() == brand.lower() :
+            cost = vehicle.calculate_rental_cost(days)
+            print(f"Rental cost for {vehicle.brand} {vehicle.model} for {days} days: ${cost}\n")
+            return
+
+    print("Vehicle not found.")
+    
