@@ -83,3 +83,14 @@ def update_rental_price():
             return
 
     print("Vehicle not found.")
+
+def display_vehicles():
+   
+
+ for vehicle in vehicles_list:
+  show_vehicle_info(vehicle)
+  print()
+
+def show_vehicle_info(vehicle):
+    vehicle.display_info()
+    
