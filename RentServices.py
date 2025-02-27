@@ -94,3 +94,13 @@ def display_vehicles():
 def show_vehicle_info(vehicle):
     vehicle.display_info()
     
+#Function to display the menu and get user input.
+def menu ():
+    
+    print("Enter 0 to add a vehicle")
+    print("Enter 1 to display vehicles")
+    print("Enter 2 to rent a vehicle")
+    print("Enter 3 to update rental price")
+    print("Enter 4 to exit")
+
+    return int(input("Choice: "))
