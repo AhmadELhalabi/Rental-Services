@@ -30,4 +30,31 @@ class Vehical:
  # Calling the display_info method for polymorphism demonstration
     def show_vehicle_info(vehicle):
       vehicle.display_info()
-      
+
+
+vehicles_list = []  # List to store all vehicles
+action = None
+
+
+# make the user to enter vehicle details
+def create_vehicle():
+    while True:
+        vehicle_type = input("Enter vehicle type (car/bike): ").strip().lower()
+        if vehicle_type in ["car", "bike"]:
+            break
+        print("Invalid vehicle type! Please enter 'car' or 'bike'.")
+
+    brand = input("Enter vehicle brand: ")
+    model = input("Enter vehicle model: ")
+    year = int(input("Enter vehicle year: "))
+    rental_price = float(input("Enter rental price per day: "))
+
+    if vehicle_type == "car":
+        special_attribute = int(input("Enter seating capacity: "))
+    else:
+        special_attribute = int(input("Enter engine capacity (cc): "))
+
+    vehicle = Vehical(vehicle_type, brand, model, year, rental_price, special_attribute)
+    vehicles_list.append(vehicle)
+    print(f"{vehicle_type.capitalize()} added successfully!")
+
