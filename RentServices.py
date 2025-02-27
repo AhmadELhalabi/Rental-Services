@@ -1,6 +1,6 @@
 class Vehical:
 # Initializing the vehicle with its type, brand, model, year, rental price, and special attribute (seats or engine capacity)
-    def _init_(self, VehicalType, brand, model, year, rental_price_per_day, special_attribute ):
+    def __init__(self, VehicalType, brand, model, year, rental_price_per_day, special_attribute ):
        self.VehicalType = VehicalType
        self.brand = brand 
        self.model = model
