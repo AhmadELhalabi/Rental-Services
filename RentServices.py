@@ -71,3 +71,15 @@ def rent_vehicle():
 
     print("Vehicle not found.")
     
+def update_rental_price():
+    
+    brand = input("Enter the brand of the vehicle you want to update: ")
+    new_price = float(input("Enter new rental price per day: "))
+
+    for vehicle in vehicles_list:
+        if vehicle.brand.lower() == brand.lower() :
+            vehicle.set_rental_price(new_price)
+            print(f"Updated rental price for {vehicle.brand} {vehicle.model}: ${vehicle.get_rental_price()}/day")
+            return
+
+    print("Vehicle not found.")
