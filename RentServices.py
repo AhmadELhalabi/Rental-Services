@@ -47,14 +47,7 @@ class Bike(Vehical):
 
 vehicles_list = []  # List to store all vehicles
 action = None
-
-# to make sure the user create_vehical before other options 
-def add_vehical():
-
-    if len(vehicles_list) == 0:
-        print("You must add a vehicle first!")
-        return False  
-    return True 
+previous_action = None
 
 # make the user to enter vehicle details
 def create_vehicle():
@@ -70,19 +63,18 @@ def create_vehicle():
     rental_price = float(input("Enter rental price per day: "))
 
     if vehicle_type == "car":
-        special_attribute = int(input("Enter seating capacity: "))
-    else:
-        special_attribute = int(input("Enter engine capacity (cc): "))
+        seating_capacity = int(input("Enter seating capacity: "))
+        vehicle = Car(brand, model, year, rental_price, seating_capacity)
 
-    vehicle = Vehical(vehicle_type, brand, model, year, rental_price, special_attribute)
+    elif vehicle_type == "bike":
+        engine_capacity = int(input("Enter engine capacity (cc): "))
+        vehicle = Bike(brand, model, year, rental_price, engine_capacity)
+
     vehicles_list.append(vehicle)
     print(f"{vehicle_type.capitalize()} added successfully!")
 
 def rent_vehicle():
    
-    if not add_vehical():
-        return
-
     brand = input("Enter the brand of the vehicle you want to rent: ")
     days = int(input("Enter number of rental days: "))
 
@@ -96,9 +88,6 @@ def rent_vehicle():
     
 def update_rental_price():
     
-    if not add_vehical():  
-        return
-
     brand = input("Enter the brand of the vehicle you want to update: ")
     new_price = float(input("Enter new rental price per day: "))
 
@@ -111,31 +100,32 @@ def update_rental_price():
     print("Vehicle not found.")
 
 def display_vehicles():
-   
- if not add_vehical():  
-        return
-
+  
  for vehicle in vehicles_list:
-  show_vehicle_info(vehicle)
+  vehicle.display_info()
   print()
 
-def show_vehicle_info(vehicle):
-    vehicle.display_info()
-    
 #Function to display the menu and get user input.
 def menu ():
     
+    print("====================================")
     print("Enter 0 to add a vehicle")
     print("Enter 1 to display vehicles")
     print("Enter 2 to rent a vehicle")
     print("Enter 3 to update rental price")
     print("Enter 4 to exit")
-
+    print("====================================")
     return int(input("Choice: "))
 
 # Main loop of the program
 while action != 4:  
     action = menu()
+    if action in [1, 2, 3] and not vehicles_list:
+        print("You must add a vehicle first!")
+        print("====================================")
+        previous_action = action  
+        create_vehicle()  
+        action = previous_action  
 
     if action == 0:
         create_vehicle()
