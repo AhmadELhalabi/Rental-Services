@@ -1,19 +1,14 @@
 class Vehical:
-# Initializing the vehicle with its type, brand, model, year, rental price, and special attribute (seats or engine capacity)
-    def __init__(self, VehicalType, brand, model, year, rental_price_per_day, special_attribute ):
-       self.VehicalType = VehicalType
-       self.brand = brand 
-       self.model = model
-       self.year = year
-       self.__rental_price_per_day = rental_price_per_day
-       self.special_attribute = special_attribute
+# Initializing the vehicle  brand, model, year, rental price
+    def __init__(self, brand, model, year, rental_price_per_day):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.__rental_price_per_day = rental_price_per_day
  
  # Displaying vehicle information based on its type (car or bike)
     def display_info(self):
-         if self.VehicalType == "car":
-            print(f"Car: {self.brand} {self.model}, Year: {self.year}, Seats: {self.special_attribute}, Rental Price: ${self.__rental_price_per_day}/day")
-         elif self.VehicalType == "bike":
-            print(f"Bike: {self.brand} {self.model}, Year: {self.year}, Engine: {self.special_attribute}cc, Rental Price: ${self.__rental_price_per_day}/day")
+        print(f"Vehicle: {self.brand} {self.model}, Year: {self.year}, Rental Price: ${self.__rental_price_per_day}/day")
    
  # Calculating the rental cost for a given number of days 
     def calculate_rental_cost(self, days):    
@@ -30,6 +25,24 @@ class Vehical:
  # Calling the display_info method for polymorphism demonstration
     def show_vehicle_info(vehicle):
       vehicle.display_info()
+
+# Class for Cars
+class Car(Vehical):
+    def __init__(self, brand, model, year, rental_price_per_day, seating_capacity):
+        super().__init__(brand, model, year, rental_price_per_day)
+        self.seating_capacity = seating_capacity
+
+    def display_info(self):
+        print(f"Car: {self.brand} {self.model}, Year: {self.year}, Seats: {self.seating_capacity}, Rental Price: ${self.get_rental_price()}/day")
+
+# Child class for Bikes
+class Bike(Vehical):
+    def __init__(self, brand, model, year, rental_price_per_day, engine_capacity):
+        super().__init__(brand, model, year, rental_price_per_day)
+        self.engine_capacity = engine_capacity
+
+    def display_info(self):
+        print(f"Bike: {self.brand} {self.model}, Year: {self.year}, Engine: {self.engine_capacity}cc, Rental Price: ${self.get_rental_price()}/day")
 
 
 vehicles_list = []  # List to store all vehicles
